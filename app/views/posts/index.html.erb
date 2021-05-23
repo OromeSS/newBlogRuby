@@ -2,7 +2,7 @@
 
 <div class="container">
     <% @posts.each do |post| %>
-      <table class="table table-dark table-striped">
+     <table class="table table-dark table-striped">
         <tbody>
             <tr scope="row">
               <td>Posted by:</td>
@@ -32,13 +32,10 @@
                  <% if policy(post).destroy?%>
                  <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 <%end%>
-              
             </tr>
-            
         </tbody>
       </table>
+       
     <% end %>
 </div>
 <br>
-
-<%= link_to 'New Post', new_post_path %>

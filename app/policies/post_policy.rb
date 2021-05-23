@@ -9,7 +9,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    false
+    user_logged_in?
   end
 
   def update?

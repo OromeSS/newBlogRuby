@@ -25,15 +25,27 @@
   </head>
 
   <body style="background-color: #633443">
-  <header>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/posts">Our Logo</a>
+    <div style="padding-center: 10px;">
+            <%= link_to 'New Post', new_post_path, class: "btn btn-secondary btn-lg active" %>
+            <%= link_to 'Posts', posts_path, class:"btn btn-secondary btn-lg active"%>
+      </div>
     <% if user_signed_in?%>
-      <%= current_user.name%> |
+      <div style="padding-left: 10px;">
+       <p class="text-light bg-dark"><%= current_user.name%></p> |
           <%= link_to 'Log out', destroy_user_session_path,
-                       method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%else%>
-          <%= link_to 'Log in', new_user_session_path %>
-      <%end%>
-  </header>
+                       method: :delete, data: { confirm: 'Are you sure?' },class:"text-light bg-dark" %>
+      </div>
+    <%else%>
+      <div style="padding-left: 10px;">
+          <%= link_to 'Log in', new_user_session_path, class:"text-light bg-dark" %>
+           <%= link_to 'Sidn up', new_user_registration_path, class:"text-light bg-dark" %>
+      </div>
+    <%end%>
+  </nav>
+
      <div class="container">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
