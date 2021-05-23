@@ -1,6 +1,24 @@
 <div><h1 style="margin: auto; text-align:center">Posts</h1></div>
 
 <div class="container">
+
+   <%= form_for :query, url: posts_path, method: :get do |form| %>
+    <div class="field">
+      <%= form.text_field :text, placeholder: 'Search...', value: params.dig('query', 'text') %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category %>
+      <%= form.select :category, [['Music', 'Music'], ['Science', 'Science'], ['Movies', 'Movies'], ['Gaming', 'Gaming'], ['Anime', 'Anime']],
+      include_blank: true, selected: params.dig('query', 'category') %>
+       <%# <%= form.select :category_id, @categories.collect {|u| [ u.name, u.id ] } %> 
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Search' %>
+    </div>
+  <% end  %>
+
     <% @posts.each do |post| %>
      <table class="table table-dark table-striped">
         <tbody>

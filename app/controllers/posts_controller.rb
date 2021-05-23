@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     authorize Post
-    @posts = Post.ordered
-    # .includes(:user, :category)
+    @posts = Post.filtered(query_params).ordered
   end
 
   # GET /posts/1 or /posts/1.json
@@ -78,5 +77,10 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body, :category_id, :user_id)
+    end
+
+    def query_params
+      query_params = params[:query]
+      query_params ? query_params.permit(:text, :category) : {}
     end
 end
