@@ -5,7 +5,7 @@
       <table class="table table-dark table-striped">
         <tbody>
             <tr scope="row">
-              <td>Posted by%></td>
+              <td>Posted by:</td>
               <td></td>
               <td></td>
               <td><%= User.find(post.user_id).name  %></td>
@@ -26,8 +26,13 @@
 
             <tr scope="row">
               <td><%= link_to 'Show', post %></td>
-              <td><%= link_to 'Edit', edit_post_path(post) %></td>
-              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if policy(post).update?%>
+                  <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                <%end%>
+                 <% if policy(post).destroy?%>
+                 <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%end%>
+              
             </tr>
             
         </tbody>

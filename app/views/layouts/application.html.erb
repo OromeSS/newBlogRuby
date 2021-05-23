@@ -27,7 +27,7 @@
   <body style="background-color: #633443">
   <header>
     <% if user_signed_in?%>
-      <%= current_user.email%> |
+      <%= current_user.name%> |
           <%= link_to 'Log out', destroy_user_session_path,
                        method: :delete, data: { confirm: 'Are you sure?' } %>
       <%else%>
