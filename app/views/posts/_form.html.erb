@@ -22,13 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-     
-    <select> 
-        <%@categories.each do |category|%>
-            <option value=<%=category.name%>><%=category.name%></option>
-        <%end%>
-      </select>
+      <%= form.label :category_id %>
+      <%= form.select :category_id, @categories.collect {|u| [ u.name, u.id ] } %>
   </div>
 
   <div class="field">
