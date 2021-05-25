@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   def index
     authorize Post
     @categories = Category.all
-    @posts = Post.categorized(query_params).filtered(query_params).ordered
+    @posts = Post.categorized(query_params).filtered(query_params).paginate(page: params[:page], per_page: 5).ordered
   end
-
+# .paginate(page: params[:page], per_page: 3)
 
   def indexByCategory
     authorize Post

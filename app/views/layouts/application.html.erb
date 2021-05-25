@@ -14,7 +14,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background-color: #733443">
+  <body style="background-color: #ccffcc">
 
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="/posts">Gachi blog</a>
@@ -30,8 +30,8 @@
       </div>
     <%else%>
       <div style="padding-left: 10px;">
-          <%= link_to 'Log in', new_user_session_path, class:"text-light bg-dark" %>
-           <%= link_to 'Sidn up', new_user_registration_path, class:"text-light bg-dark" %>
+          <%= link_to 'Log in', new_user_session_path, class:"text-light bg-dark" %> |
+           <%= link_to 'Sign up', new_user_registration_path, class:"text-light bg-dark" %>
       </div>
     <%end%>
   </nav>

@@ -36,65 +36,32 @@
     <br>
     <br>
   </div>
+
     <% @posts.each do |post| %>
+      <table class="table table-dark table-striped">
+        <tbody>
+            <tr scope="row">
+              <td>Posted by:<%= User.find(post.user_id).name  %></td>
+              <td></td>
+              <td><%= Category.find(post.category_id).name %></td>
+            </tr>
 
-    <span class="border">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm">Posted by:<%= User.find(post.user_id).name  %>
-        </div>
-         <div class="col-sm">
-        </div> 
-        <div class="col-sm">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-      </div>
-       <div class="row">
-          <div class="col-sm">
-          </div>
-          <div class="col-sm">
-          </div> 
-          <div class="col-sm"><%= Category.find(post.category_id).name %>
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="row">
-      <div class="col-sm">
-          </div> 
-          <div class="col-sm">
-          </div> 
-          <div class="col-sm">
-          </div> 
-      </div>
-      <div class="row">
-        <div class="col-sm">
-        </div>
-         <div class="col-sm"><%= post.title %>
-        </div> 
-        <div class="col-sm">
-        </div>
-      </div>
-      <div class="row">
-      </div>
-      <div class="row">
-        <div >
-        <p style="display:flex; flex-wrap:wrap; width:200px"><%= post.body %></p>
-        </div>
-      </div>
+            <tr scope="row">
+              <td colspan="4"><strong style="color: #ffffff"><%= post.title %></strong></td>
+            </tr>
 
-      <div class="row">
-        <div class="col-sm"><%= link_to 'Show', post %>
-        </div>
-         <div class="col-sm"><%= link_to 'Edit', edit_post_path(post) %>
-        </div> 
-        <div class="col-sm"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
-     </div>
-     
-    <br></span>  
+            <tr scope="row">
+              <td><%= link_to 'Show', post %></td>
+                <% if policy(post).update?%>
+                  <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                <%end%>
+                 <% if policy(post).destroy?%>
+                 <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%end%>
+            </tr>
+        </tbody>
+      </table>
     <% end %>
 </div>
+
+<%= will_paginate @posts %>
