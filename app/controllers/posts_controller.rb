@@ -7,13 +7,7 @@ class PostsController < ApplicationController
     @categories = Category.all
     @posts = Post.categorized(query_params).filtered(query_params).paginate(page: params[:page], per_page: 5).ordered
   end
-# .paginate(page: params[:page], per_page: 3)
-
-  def indexByCategory
-    authorize Post
-    @posts = Post.filtered(query_params).ordered
-  end
-
+  
   # GET /posts/1 or /posts/1.json
   def show
     authorize @post

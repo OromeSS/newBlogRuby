@@ -56,8 +56,7 @@ class ApplicationPolicy
 
   def admin?
     return false unless user
-
-    user.admin?
+     user.role_id == 3
   end
 
 end
