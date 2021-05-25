@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Here are all features, that i implemented for my blog:
+1)Getting started;
+2)Authentification with different users;
+3)Authorization and admin mode;
 
-Things you may want to cover:
+Admin on my prod and dev versions: email - vpavlenchik@gmail.com, password - q1w2e3r4t5y6u7i8o9p0
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4)Filter by category;
+5)Pagination (5 posts per page)
+6)Search (any text of post);
+7)Deployment on Heroku. You can find my blog here:
+  https://immense-coast-92337.herokuapp.com/posts
