@@ -4,6 +4,13 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     authorize Post
+    @categories = Category.all
+    @posts = Post.categorized(query_params).filtered(query_params).ordered
+  end
+
+
+  def indexByCategory
+    authorize Post
     @posts = Post.filtered(query_params).ordered
   end
 
@@ -81,6 +88,6 @@ class PostsController < ApplicationController
 
     def query_params
       query_params = params[:query]
-      query_params ? query_params.permit(:text, :category) : {}
+      query_params ? query_params.permit(:text, :category_id) : {}
     end
 end

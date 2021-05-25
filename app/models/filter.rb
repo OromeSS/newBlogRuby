@@ -15,5 +15,4 @@ class Post::Filter
 
     scope
   end
-
 end
